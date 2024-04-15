@@ -11,4 +11,6 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Print Node.js version
-        run: node --version
+        run: |
+            node --version
+            echo "Node.js version is ${{ secrets.KEY}}"
