@@ -1,0 +1,17 @@
+{
+    "bracketSpacing": false,
+    "jsxSingleQuote": true,
+    "bracketSameLine": true,
+    "trailingComma": "es5",
+    "printWidth": 80,
+    "parser": "flow",
+    "arrowParens": "avoid",
+    "overrides": [
+      {
+        "files": "esNextPaths",
+        "options": {
+          "trailingComma": "all"
+        }
+      }
+    ]
+}

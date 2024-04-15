@@ -1,0 +1,14 @@
+name: checkout-repository
+on: [push]
+jobs:
+  checkout-repo-to-instance:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v4.0.2
+      - name: Install dependencies
+        run: npm install
+      - name: Print Node.js version
+        run: node --version
