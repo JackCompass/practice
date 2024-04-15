@@ -8,18 +8,18 @@ jobs:
         uses: actions/checkout@v4
       - name: Setup Node.js environment
         uses: actions/setup-node@v4.0.2
-      - name: Install dependencies
-        run: npm install
-      - name: Print Node.js version
-        run: node --version
+      - name: Install pnpm
+        run: npm install -g pnpm
+      - name: Install dependencies with pnpm
+        run: pnpm install
       - name: build project
-        run: npm run build
+        run: pnpm run build
       - name: Rsync Deployments Action
         uses: Burnett01/rsync-deployments@7.0.1
         with:
           switches: -avzr --delete
-          remote_path: /home/ubuntu/project
+          remote_path: /home/ubuntu/project/
           server: ${{ secrets.SERVER }}
           remote_user: ${{ secrets.USER }}
           remote_key: ${{ secrets.KEY }}
-          local_path: ./dist
+          path: dist/
