@@ -23,3 +23,14 @@ jobs:
           remote_user: ${{ secrets.USER }}
           remote_key: ${{ secrets.KEY }}
           path: ./
+      - name: SSH Remote Commands
+        uses: appleboy/ssh-action@v1.0.3
+        with: 
+          host: ${{ secrets.SERVER }}
+          username: ${{ secrets.USER }}
+          key: ${{ secrets.KEY }}
+          script: |
+            cd /home/ubuntu/prac/
+            pnpm install
+            pnpm run build
+            pm2 restart all
