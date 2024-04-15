@@ -6,20 +6,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-      - name: Setup Node.js environment
-        uses: actions/setup-node@v4.0.2
-      - name: Install pnpm
-        run: npm install -g pnpm
-      - name: Install dependencies with pnpm
-        run: pnpm install
-      - name: build project
-        run: pnpm run build
+    #   - name: Setup Node.js environment
+    #     uses: actions/setup-node@v4.0.2
+    #   - name: Install pnpm
+    #     run: npm install -g pnpm
+    #   - name: Install dependencies with pnpm
+    #     run: pnpm install
+    #   - name: build project
+    #     run: pnpm run build
       - name: Rsync Deployments Action
         uses: Burnett01/rsync-deployments@7.0.1
         with:
           switches: -avzr --delete
-          remote_path: /home/ubuntu/project/
+          remote_path: /home/ubuntu/prac/
           remote_host: ${{ secrets.SERVER }}
           remote_user: ${{ secrets.USER }}
           remote_key: ${{ secrets.KEY }}
-          path: dist/
+          path: ./
