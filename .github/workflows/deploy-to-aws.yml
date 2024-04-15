@@ -19,7 +19,7 @@ jobs:
         with:
           switches: -avzr --delete
           remote_path: /home/ubuntu/project/
-          server: ${{ secrets.SERVER }}
+          remote_host: ${{ secrets.SERVER }}
           remote_user: ${{ secrets.USER }}
           remote_key: ${{ secrets.KEY }}
           path: dist/
