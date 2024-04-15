@@ -11,6 +11,15 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Print Node.js version
-        run: |
-            node --version
-            echo "Node.js version is ${{ secrets.KEY}}"
+        run: node --version
+      - name: build project
+        run: npm run build
+      - name: Rsync Deployments Action
+        uses: Burnett01/rsync-deployments@7.0.1
+        with:
+          switches: -avzr --delete
+          remote_path: /home/ubuntu/project
+          server: ${{ secrets.SERVER }}
+          remote_user: ${{ secrets.USER }}
+          remote_key: ${{ secrets.KEY }}
+          local_path: ./dist
